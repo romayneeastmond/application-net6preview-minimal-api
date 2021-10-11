@@ -27,9 +27,9 @@ public static class Countries
             return await new CountryService(db).Get(code) is Country country ? Results.Ok(country) : Results.NotFound();
         };
 
-        static async Task<IEnumerable<Country[]>> GetByRegion(CountryDbContext db, string region)
+        static async Task<IResult> GetByRegion(CountryDbContext db, string region)
         {
-            return await new CountryService(db).GetByRegion(region);
+            return await new CountryService(db).GetByRegion(region) is IEnumerable<Country[]> regions ? Results.Ok(regions) : Results.NotFound();
         }
 
         static async Task<IResult> Insert(CountryDbContext db, Country country)
