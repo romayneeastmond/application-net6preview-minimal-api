@@ -50,3 +50,6 @@ This might be a result of separating the DbContext concerns away from the Progra
 
 All terms used are copyright to their original authors.
 
+## Live Demo
+
+Live demo hosted in Microsoft Azure .NET 6 Early Access App Service [Minimal Api Demonstration](https://dev-net6preview-minimal-api-demo.azurewebsites.net/swagger/index.html).
