@@ -1,4 +1,5 @@
 using ApplicationNET6PreviewSandbox.Models;
+using ApplicationNET6PreviewSandbox.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -38,6 +39,16 @@ app.MapPost("/application/ungrouped", () =>
 {
     return "Hello World, the default ungrouped behaviour (Post).";
 });
+
+app.MapGet("/administration/rebuild", Rebuild)
+    .WithTags("Administration"); 
+
+static async Task<IResult> Rebuild(CountryDbContext db)
+{
+    await new CountryService(db).Rebuild();
+
+    return Results.StatusCode(204);
+};
 
 app.AddRoutesApplication();
 app.AddRoutesCountries();

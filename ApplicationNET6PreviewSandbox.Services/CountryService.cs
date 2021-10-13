@@ -1,6 +1,5 @@
 ﻿using ApplicationNET6PreviewSandbox.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace ApplicationNET6PreviewSandbox.Services
 {
@@ -68,6 +67,17 @@ namespace ApplicationNET6PreviewSandbox.Services
             _db.Countries.Remove(countryItem);
 
             await _db.SaveChangesAsync();
+        }
+
+        public async Task Rebuild()
+        {
+            var countries = await _db.Countries.ToListAsync();
+
+            _db.Countries.RemoveRange(countries);
+
+            await _db.SaveChangesAsync();
+
+            CountryInitalizer.Initialize(_db);
         }
     }
 }
