@@ -2,7 +2,7 @@
 
 namespace ApplicationNET6PreviewSandbox.Models
 {
-    public class CountryDbContext : DbContext
+    public class CountryDbContext : DbContext, ICountryDbContext
     {
         public CountryDbContext(DbContextOptions options) : base(options)
         {

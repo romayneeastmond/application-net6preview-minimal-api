@@ -17,38 +17,38 @@ public static class Countries
 
         app.MapDelete("/countries/delete", Delete);
 
-        static async Task<IResult> Get(CountryDbContext db)
+        static async Task<IResult> Get(ICountryService countryService)
         {
-            return await new CountryService(db).Get() is List<Country> countries ? Results.Ok(countries) : Results.Ok(new List<Country>());
+            return await countryService.Get() is List<Country> countries ? Results.Ok(countries) : Results.Ok(new List<Country>());
         };
 
-        static async Task<IResult> GetByCode(CountryDbContext db, string code)
+        static async Task<IResult> GetByCode(ICountryService countryService, string code)
         {
-            return await new CountryService(db).Get(code) is Country country ? Results.Ok(country) : Results.NotFound();
+            return await countryService.Get(code) is Country country ? Results.Ok(country) : Results.NotFound();
         };
 
-        static async Task<IResult> GetByRegion(CountryDbContext db, string region)
+        static async Task<IResult> GetByRegion(ICountryService countryService, string region)
         {
-            return await new CountryService(db).GetByRegion(region) is IEnumerable<Country[]> regions ? Results.Ok(regions) : Results.NotFound();
+            return await countryService.GetByRegion(region) is IEnumerable<Country[]> regions ? Results.Ok(regions) : Results.NotFound();
         }
 
-        static async Task<IResult> Insert(CountryDbContext db, Country country)
+        static async Task<IResult> Insert(ICountryService countryService, Country country)
         {
-            await new CountryService(db).Insert(country);
+            await countryService.Insert(country);
 
             return Results.Created($"/countries/{country.Code}", country);
         };
 
-        static async Task<IResult> Update(CountryDbContext db, string code, Country country)
+        static async Task<IResult> Update(ICountryService countryService, string code, Country country)
         {
-            await new CountryService(db).Update(code, country);
+            await countryService.Update(code, country);
 
             return Results.StatusCode(204);
         };
 
-        static async Task<IResult> Delete(CountryDbContext db, string code)
+        static async Task<IResult> Delete(ICountryService countryService, string code)
         {
-            await new CountryService(db).Delete(code);
+            await countryService.Delete(code);
 
             return Results.StatusCode(204);
         };

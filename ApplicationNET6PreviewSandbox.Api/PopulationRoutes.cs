@@ -9,14 +9,14 @@ public static class Population
 
         app.MapGet("/population/get/minimum", Minimum);
 
-        static async Task<IResult> Maximum(CountryDbContext db)
+        static async Task<IResult> Maximum(IPopulationService populationService)
         {
-            return await new PopulationService(db).Maximum() is Country country ? Results.Ok(country) : Results.Ok(0);
+            return await populationService.Maximum() is Country country ? Results.Ok(country) : Results.Ok(0);
         }
 
-        static async Task<IResult> Minimum(CountryDbContext db)
+        static async Task<IResult> Minimum(IPopulationService populationService)
         {
-            return await new PopulationService(db).Minimum() is Country country ? Results.Ok(country) : Results.Ok(0);
+            return await populationService.Minimum() is Country country ? Results.Ok(country) : Results.Ok(0);
         }
     }
 }

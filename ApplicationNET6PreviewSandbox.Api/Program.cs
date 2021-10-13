@@ -11,12 +11,9 @@ builder.Services.AddDbContext<CountryDbContext>(
     )
 );
 
-var countryDbContext = new CountryDbContext(builder.Services.BuildServiceProvider().GetRequiredService<DbContextOptions<CountryDbContext>>());
-
-countryDbContext.Database.Migrate();
-
-CountryInitalizer.Initialize(countryDbContext);
-
+builder.Services.AddScoped<ICountryDbContext>(provider => provider.GetService<CountryDbContext>()!);
+builder.Services.AddTransient<ICountryService, CountryService>();
+builder.Services.AddTransient<IPopulationService, PopulationService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -40,12 +37,18 @@ app.MapPost("/application/ungrouped", () =>
     return "Hello World, the default ungrouped behaviour (Post).";
 });
 
-app.MapDelete("/administration/rebuild", Rebuild)
-    .WithTags("Administration"); 
-
-static async Task<IResult> Rebuild(CountryDbContext db)
+app.MapPost("/administration/initialize", (CountryDbContext db) =>
 {
-    await new CountryService(db).Rebuild();
+    CountryInitalizer.Initialize(db);
+
+    return Results.StatusCode(204);
+}).WithTags("Administration");
+
+app.MapDelete("/administration/rebuild", Rebuild).WithTags("Administration");
+
+static async Task<IResult> Rebuild(ICountryService countryService)
+{
+    await countryService.Rebuild();
 
     return Results.StatusCode(204);
 };

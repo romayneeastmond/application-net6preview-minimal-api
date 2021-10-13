@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ApplicationNET6PreviewSandbox.Services
 {
-    public class CountryService
+    public class CountryService : ICountryService
     {
         private CountryDbContext _db;
 
