@@ -5,7 +5,7 @@ namespace ApplicationNET6PreviewSandbox.Services
 {
     public class PopulationService : IPopulationService
     {
-        private CountryDbContext _db;
+        private readonly CountryDbContext _db;
 
         public PopulationService(CountryDbContext db)
         {
