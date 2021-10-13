@@ -40,7 +40,7 @@ app.MapPost("/application/ungrouped", () =>
     return "Hello World, the default ungrouped behaviour (Post).";
 });
 
-app.MapGet("/administration/rebuild", Rebuild)
+app.MapDelete("/administration/rebuild", Rebuild)
     .WithTags("Administration"); 
 
 static async Task<IResult> Rebuild(CountryDbContext db)
