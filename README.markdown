@@ -54,6 +54,8 @@ All terms used are copyright to their original authors.
 
 Live demo hosted in Microsoft Azure .NET 6 Early Access App Service [Minimal Api Demonstration](https://dev-net6preview-minimal-api-demo.azurewebsites.net/swagger/index.html).
 
+Azure F1 instances are :snowflake: ice cold. That first load will need some :sun_with_face: warming up.
+
 ## .NET 6 Release Candidate 2
 
 .NET 6 rc 2 is available October 12, 2021 and should work with Visual Studio 2022 preview 5.0. 
