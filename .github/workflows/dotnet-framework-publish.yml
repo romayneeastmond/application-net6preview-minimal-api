@@ -5,7 +5,7 @@ on:
 
 jobs:
   build_and_publish:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
@@ -19,7 +19,7 @@ jobs:
     - name: Build and Publish
       run: |
         dotnet build --configuration Release --no-restore
-        dotnet publish -c Release -o ./dotnetframework-webapp -r linux-x64 --self-contained true /p:UseAppHost=true
+        dotnet publish -c Release -o ./dotnetframework-webapp -r win-x64 --self-contained true /p:UseAppHost=true
 
     - name: Test
       run: dotnet test --no-build --verbosity normal
