@@ -5,7 +5,7 @@ on:
 
 jobs:
   build_and_publish:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
@@ -29,3 +29,17 @@ jobs:
       with:
             name: dotnetframework-webapp
             path: ./dotnetframework-webapp
+
+  check_ftp_version:
+    runs-on: ubuntu-latest
+    needs: build_and_publish
+
+    steps:
+      #- name: Download Packaged Artifact
+      #  uses: actions/download-artifact@v2
+      #  with:
+      #    name: dotnetframework-webapp
+
+      - name: Check FTP version
+        run: |
+           echo which scp
