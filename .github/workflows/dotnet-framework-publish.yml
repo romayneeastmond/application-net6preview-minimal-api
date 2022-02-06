@@ -33,6 +33,14 @@ jobs:
             name: dotnetframework-webapp
             path: ./dotnetframework-webapp
 
+  standard_version:
+    runs-on: ubuntu-latest
+    needs: build_and_publish
+
+    steps:
+      - name: Standard Version
+        uses: qzb/standard-version-action@v1.0.5
+
   upload_package_to_ftp:
     runs-on: ubuntu-latest
     needs: build_and_publish
