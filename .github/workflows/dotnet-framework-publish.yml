@@ -43,13 +43,17 @@ jobs:
         with:
           name: dotnetframework-webapp
 
-      - name: Zip Release
+      - name: Zip Package
         uses: TheDoctor0/zip-release@0.6.1
         with:
           filename: dotnetframework-webapp.zip
-          # Base path for archive files
           path: .
 
-      - name: Upload Package to FTP
-        run: |
-           sshpass -p "${{ secrets.FTP_PASSWORD }}" scp dotnetframework-webapp.zip ${{ secrets.FTP_USERNAME }}@${{ secrets.FTP_ADDRESS }}:/site/deployments
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.2.0
+        with:
+          server: ${{ secrets.FTP_ADDRESS }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}          
+          server-dir: /site/deployments/
+          log-level: verbose
