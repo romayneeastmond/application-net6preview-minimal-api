@@ -39,12 +39,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Standard Version Bot Configuration
+      - name: Bot Configuration
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
+
       - name: Standard Version Bump
         uses: qzb/standard-version-action@v1.0.5
+
+      - name: Push Tags
+        run: |
+          git push --follow-tags origin main
 
   upload_package_to_ftp:
     runs-on: ubuntu-latest
