@@ -39,7 +39,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Standard Version
+      - name: Standard Version Bot Configuration
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+      - name: Standard Version Bump
         uses: qzb/standard-version-action@v1.0.5
 
   upload_package_to_ftp:
