@@ -42,10 +42,6 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: dotnetframework-webapp
-          
-      - name: Ping FTP
-        run: |
-           ping ${{ secrets.FTP_ADDRESS }}
            
       - name: Upload Package to FTP
         run: |
