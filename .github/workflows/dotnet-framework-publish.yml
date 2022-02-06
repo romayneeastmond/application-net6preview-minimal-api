@@ -38,6 +38,7 @@ jobs:
     needs: build_and_publish
 
     steps:
+      - uses: actions/checkout@v2
       - name: Standard Version
         uses: qzb/standard-version-action@v1.0.5
 
