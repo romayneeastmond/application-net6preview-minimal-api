@@ -45,5 +45,5 @@ jobs:
 
       - name: Check FTP version
         run: |
-           echo which scp
-           echo which sshpass
+           which scp
+           which sshpass
