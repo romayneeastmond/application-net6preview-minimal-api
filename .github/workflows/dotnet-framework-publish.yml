@@ -42,14 +42,16 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: dotnetframework-webapp
-           
-      - name: FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@4.2.0
+
+      - name: Zip Package        
+        uses: papeloto/action-zip@v1
         with:
-          server: ${{ secrets.FTP_ADDRESS }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}          
-          server-dir: /site/deployments/
-          log-level: verbose
+            files: ./
+            dest: dotnetframework-webapp.zip           
+
+      - name: Upload Package to FTP
+        run: |
+           sshpass -p "${{ secrets.FTP_PASSWORD }}" scp dotnetframework-webapp.zip ${{ secrets.FTP_USERNAME }}@${{ secrets.FTP_ADDRESS }}:/site/deployments
+
 
 
