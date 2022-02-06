@@ -52,7 +52,9 @@ jobs:
       - name: Copy Zip Package
         run: |
           mkdir deploymentTemp
-          cp dotnetframework-webapp.zip ./deploymentTemp/dotnetframework-webapp.zip
+          cp dotnetframework-webapp.zip deploymentTemp
+          cd deploymentTemp
+          ls
 
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.2.0
