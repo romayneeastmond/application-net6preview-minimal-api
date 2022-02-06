@@ -43,6 +43,13 @@ jobs:
         with:
           name: dotnetframework-webapp
            
-      - name: Upload Package to FTP
-        run: |
-           sshpass -p "${{ secrets.FTP_PASSWORD }}" scp dotnetframework-webapp.zip ${{ secrets.FTP_USERNAME }}@${{ secrets.FTP_ADDRESS }}:/site/deployments
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.2.0
+        with:
+          server: ${{ secrets.FTP_ADDRESS }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./application-net6preview-minimal-api/
+          server-dir: /site/deployments/
+
+
