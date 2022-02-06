@@ -48,8 +48,8 @@ jobs:
         with:
           server: ${{ secrets.FTP_ADDRESS }}
           username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./application-net6preview-minimal-api/
+          password: ${{ secrets.FTP_PASSWORD }}          
           server-dir: /site/deployments/
+          log-level: verbose
 
 
