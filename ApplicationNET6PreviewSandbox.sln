@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationNET6PreviewSandb
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationNET6PreviewSandbox.Services", "ApplicationNET6PreviewSandbox.Services\ApplicationNET6PreviewSandbox.Services.csproj", "{015C0F7E-82E7-41E8-BCA1-B0E4313C3D2D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{897317B9-60E5-43C2-B798-7F3D34DA9C39}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{D4BD622B-91B5-4A4B-B62D-7EFE6F2FB5A9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{4B1B0D78-95A9-44B3-B54B-43AE0FA969C3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{46044325-91B6-455F-B675-A5216A52A22C}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\dotnet-framework-publish.yml = .github\workflows\dotnet-framework-publish.yml
 	EndProjectSection
@@ -39,7 +39,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{4B1B0D78-95A9-44B3-B54B-43AE0FA969C3} = {897317B9-60E5-43C2-B798-7F3D34DA9C39}
+		{46044325-91B6-455F-B675-A5216A52A22C} = {D4BD622B-91B5-4A4B-B62D-7EFE6F2FB5A9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {73D0A079-6FBB-4089-AF6B-0D1DF47E969B}
