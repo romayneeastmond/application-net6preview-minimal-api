@@ -49,11 +49,16 @@ jobs:
           filename: dotnetframework-webapp.zip
           path: .
 
+      - name: Copy Zip Package
+        run: |
+          mkdir deploymentTemp
+          cp dotnetframework-webapp.zip ./deploymentTemp/dotnetframework-webapp.zip
+
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.2.0
         with:
           server: ${{ secrets.FTP_ADDRESS }}
           username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}          
+          password: ${{ secrets.FTP_PASSWORD }}    
+          local-dir: /deploymentTemp/
           server-dir: /site/deployments/
-          log-level: verbose
