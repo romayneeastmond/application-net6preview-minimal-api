@@ -45,4 +45,4 @@ jobs:
 
       - name: Upload Package to FTP
         run: |
-           sshpass -p "${{ secrets.FTP_PASSWORD }}" scp dotnetframework-webapp.zip ${{ secrets.FTP_USERNAME }}@${{ secrets.FTP_ADDRESS }}:{{ secrets.FTP_ADDRESS }}/site/deployments
+           sshpass -p "${{ secrets.FTP_PASSWORD }}" scp dotnetframework-webapp.zip ${{ secrets.FTP_USERNAME }}@${{ secrets.FTP_ADDRESS }}:${{ secrets.FTP_ADDRESS }}/site/deployments
