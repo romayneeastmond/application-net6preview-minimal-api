@@ -33,17 +33,16 @@ jobs:
             name: dotnetframework-webapp
             path: ./dotnetframework-webapp
 
-  check_ftp_version:
+  upload_package_to_ftp:
     runs-on: ubuntu-latest
     needs: build_and_publish
 
     steps:
-      #- name: Download Packaged Artifact 1
-      #  uses: actions/download-artifact@v2
-      #  with:
-      #    name: dotnetframework-webapp
+      - name: Download Packaged Artifact 1
+        uses: actions/download-artifact@v2
+        with:
+          name: dotnetframework-webapp
 
-      - name: Check FTP version
+      - name: Upload Package to FTP
         run: |
-           which scp
-           which sshpass
+           sshpass -p "${{ secrets.FTP_PASSWORD }}" scp dotnetframework-webapp.zip ${{ secrets.FTP_USERNAME }}@${{ secrets.FTP_ADDRESS }}:{{ secrets.FTP_ADDRESS }}/site/deployments
