@@ -81,4 +81,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}    
           local-dir: ./deploymentTemp/
-          server-dir: /site/deployments/
+          server-dir: /site/deployments/previewsandbox
